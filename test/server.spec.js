@@ -29,21 +29,21 @@ function withMovie(i) {
 
 
 mock
-  .onGet('http://www.omdbapi.com', { params: { i: 'tt3896198', apiKey: '8730e0e' }})
+  .onGet('http://www.omdbapi.com', { params: { i: 'tt3896198', apiKey: '16b7ffd4' }})
   .replyOnce(withMovie(0))
-	.onGet('http://www.omdbapi.com/', { params: { i: 'tt3896198', apiKey: '8730e0e' }})
+	.onGet('http://www.omdbapi.com/', { params: { i: 'tt3896198', apiKey: '16b7ffd4' }})
   .replyOnce(withMovie(0))
-  .onGet('http://www.omdbapi.com/?i=tt3896198&apikey=8730e0e')
+  .onGet('http://www.omdbapi.com/?i=tt3896198&apikey=16b7ffd4')
   .replyOnce(withMovie(0))
-  .onGet('http://www.omdbapi.com/?apikey=8730e0e&i=tt3896198')
+  .onGet('http://www.omdbapi.com/?apikey=16b7ffd4&i=tt3896198')
   .replyOnce(withMovie(0))
-  .onGet('http://www.omdbapi.com', { params: { t: 'baby driver', apiKey: '8730e0e' }})
+  .onGet('http://www.omdbapi.com', { params: { t: 'Baby Driver', apiKey: '16b7ffd4' }})
   .replyOnce(withMovie(1))
-  .onGet('http://www.omdbapi.com/', { params: { t: 'baby driver', apiKey: '8730e0e' }})
+  .onGet('http://www.omdbapi.com/', { params: { t: 'Baby Driver', apiKey: '16b7ffd4' }})
   .replyOnce(withMovie(1))
-  .onGet('http://www.omdbapi.com/?t=baby%20driver&apikey=8730e0e')
+  .onGet('http://www.omdbapi.com/?t=babydriver&apikey=16b7ffd4')
   .replyOnce(withMovie(1))
-  .onGet('http://www.omdbapi.com/?apikey=8730e0e&t=baby%20driver')
+  .onGet('http://www.omdbapi.com/?apikey=16b7ffd4&t=babydriver')
   .replyOnce(withMovie(1))
 
 const expect = chai.expect;
@@ -73,9 +73,9 @@ describe("server module", function() {
     })
   });
   
-  it("GET /?t=baby%20driver responds with movie data", (done) => {
+  it("GET /?t=babydriver responds with movie data", (done) => {
 	  chai.request(app)
-      .get('/?t=baby%20driver')
+      .get('/?t=babydriver')
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(err).to.be.null;
@@ -84,9 +84,9 @@ describe("server module", function() {
     })
 	});
 
-	it("Second GET /?t=baby%20driver responds with movie data, without hitting OMDb", (done) => {
+	it("Second GET /?t=babydriver responds with movie data, without hitting OMDb", (done) => {
 	  chai.request(app)
-      .get('/?t=baby%20driver')
+      .get('/?t=babydriver')
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(err).to.be.null;
@@ -95,9 +95,9 @@ describe("server module", function() {
     })
   });
   
-  it("Third GET /?t=baby%20driver responds with movie data, without hitting OMDb", (done) => {
+  it("Third GET /?t=babydriver responds with movie data, without hitting OMDb", (done) => {
 	  chai.request(app)
-      .get('/?t=baby%20driver')
+      .get('/?t=babydriver')
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(err).to.be.null;
